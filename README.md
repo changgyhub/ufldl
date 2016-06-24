@@ -41,5 +41,23 @@ Solutions to the Exercises of [UFLDL Tutorial](http://ufldl.stanford.edu/wiki/in
 * `stlExercise.m`: The overall procedure, including Setting parameters, Load data from the MNIST database (and divided into labled and unlabled data sets), Train the sparse autoencoder with unlabled data set (like Exercise 2), Extract Features from the Supervised Dataset (using `feedForwardAutoencoder.m`, based on the w(1) form the autoencoder), Train the softmax classifier (based on the input from the extracted features), Testing with test datas.<br>
 
 #####Note:
-* Briefly speaking, we firstly use sparse autoencoder to train unlabled data and get w(1) and w(2), then use self-taught learning to  obtain a(2) using w(1), finally use Softmax Regression to train labled data (a(2), y) and optimize theta (the new w(2) in final network). Notice that with fine-tuning (introduced in topic 6), we can also optimize w(1) with optimization methods when training labled data.<br>
-* The overall procedure is explained in topic 6.1.<br>
+* The whole procedure can be explained as:<br>
+  1. Use sparse autoencoder to train unlabled data and get w(1) and w(2);<br>
+  2. Use self-taught learning to  obtain a(2) using w(1);<br>
+  3. Use Softmax Regression to train labled data (a(2), y) and optimize theta (the new w(2) in final network).<br>
+* The overall procedure is explained in topic 6.1. Notice that with fine-tuning (introduced in topic 6), we can also optimize w(1) with optimization methods when training labled data.<br><br>
+
+##Exercise 6: Stacked Autoencoder for Digit Classification
+######This Exercise is extremely important, you are highly recomanded to read `stackedAECost.m`, `stackedAEPredict.m` and `stackedAEExercise.m` thoroughly.
+#####The following files are the core of this exercise:<br>
+
+*`stackedAECost.m`: This function do the fine-tuning, including<br>
+  1. Feed Forward Autoencoder for the hidden levels (level 2 ~ depth+1);<br>
+  2. Compute J and ▽ J for the softmax level (level depth+2);<br>
+  3. Back Propagation from the last hidden level to the input level (depth ~ 1, we minus one here from depth+1 ~ 2, because f(w(i-1), b(i-1);x(i-1)) = a(i), the parameters come from the previous level).<br>
+
+#####Note:
+*The levels in `stackedAECost.m` are:<br>
+  1. input level: level 1;<br>
+  2. hidden levels: level 2 ~ depth+1, more specifically, it should be level 2 and 3, level 3 and 4 ... level depth and depth +1, where level i is the input level of the stacked autoencoder and level i+1 is the second level to self-teach;<br>
+  3. softmax level: level depth+2.<br>
