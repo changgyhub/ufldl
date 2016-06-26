@@ -55,7 +55,7 @@ Solutions to the Exercises of [UFLDL Tutorial](http://ufldl.stanford.edu/wiki/in
   2. Compute J and ▽ J for the softmax level (level depth+2);<br>
   3. Back Propagation from the last hidden level to the input level (depth ~ 1, we minus one here from depth+1 ~ 2, because f(w(i-1), b(i-1);x(i-1)) = a(i), the parameters come from the previous level).<br>
 
-* `stackedAEExercise.m`: The overall procedure:<br>
+* `stackedAEExercise.m`: The overall procedure, including<br>
   1. Set Parameters, we set depth = 2;<br>
   2. Load data from the MNIST database;<br>
   3. Train the first sparse autoencoder (input level 1, hidden level 2, output level ignored);<br>
@@ -71,3 +71,8 @@ Solutions to the Exercises of [UFLDL Tutorial](http://ufldl.stanford.edu/wiki/in
   1. input level: level 1;<br>
   2. hidden levels: level 2 ~ depth+1, more specifically, it should be level 2 and 3, level 3 and 4 ... level depth and depth +1, where level i is the input level of the stacked autoencoder and level i+1 is the second level to self-teach;<br>
   3. softmax level: level depth+2.<br>
+
+##Exercise 7: Linear Decoder on Color Features
+#####The following files are the core of this exercise:<br>
+* `sparseAutoencoderLinearCost.m`: modified from `sparseAutoencoderCost.m` in Exercise 1, so that f(·) and delta of the last level is set to identity ("linear") to generate color representations rather than 0~1 gray color.<br>
+* `linearDecoderExercise.m`: The overall procedure, including Setting parameters, Gradient checking of the linear decoder, Load patches, ZCA whiting, Learning features (using autoencoder with linear decoder), Visualization.<br>
