@@ -104,6 +104,21 @@ Solutions to the Exercises of [UFLDL Tutorial](http://ufldl.stanford.edu/wiki/in
   We simply take the mean of each poolDim*poolDim.<br>
 
 * `cnnExercise.m`: The overall procedure, including<br>
-  1. ;<br>
+  1. Initialization of parameters;<br>
+  2. Train a sparse autoencoder (with a linear decoder) to learn: we simply use the result of Exercise 7. Here three objects are used:
+    1. optTheta: theta (w and b) of the autoencoder
+    2. ZCAWhite: the ZCA whiting matrix
+    3. meanPatch: mean of the patches
+  
+  3. Test convolution: use `cnnConvolve.m` to test the convolution.
+  4. Test pooling: use `cnnPool.m` to test the pooling.
+  5. Convolve and pool with the dataset: the core part, including<br>
+    1. Load train and test sets;<br>
+    2. Divide features into groups. (This part can be omitted, it is just for testing and logging. After all we have to convolute through all features/convolution matrices);<br>
+    3. convolute and pool train and test datasets.<br>
+  
+  6. Use pooled features for classification: Here we choose to use softmax classifier;<br>
+  7. Test classifier. You should expect to get an accuracy of around 80% on the test images.<br>
+  
 
 
