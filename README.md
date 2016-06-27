@@ -75,7 +75,7 @@ Solutions to the Exercises of [UFLDL (Unsupervised Feature Learning and Deep Lea
 ##Exercise 7: Linear Decoder on Color Features
 #####The following files are the core of this exercise:<br>
 * `sparseAutoencoderLinearCost.m`: modified from `sparseAutoencoderCost.m` in Exercise 1, so that f(·) and delta of the last level is set to identity ("linear") to generate color representations rather than 0~1 gray color.<br>
-* `linearDecoderExercise.m`: The overall procedure, including Setting parameters, Gradient checking of the linear decoder, Load patches, ZCA whiting, Learning features (using autoencoder with linear decoder), Visualization.<br>
+* `linearDecoderExercise.m`: The overall procedure, including Setting parameters, Gradient checking of the linear decoder, Load patches, ZCA whitening, Learning features (using autoencoder with linear decoder), Visualization.<br>
 
 ##Exercise 8: Convolution and Pooling
 ######This Exercise is extremely important, you are highly recomanded to read `cnnExercise.m`, `cnnConvolve.m` and `cnnPool.m` thoroughly.
@@ -89,7 +89,7 @@ Solutions to the Exercises of [UFLDL (Unsupervised Feature Learning and Deep Lea
   Moreover, the 3rd and 4th dimension is composed of __convolvedImage__, which is computed by:<br>
 
   1. feature: represents the convolution matrix, it is computed by:<br>
-    1. obtain optTheta and ZCAWhite: these are the theta and ZCA matrix obtained from the color features from Exercise 7. More specifically, optTheta contains w and b of the neurons, and ZCAWhite represents the processing matrix of ZCA whiting;<br>
+    1. obtain optTheta and ZCAWhite: these are the theta and ZCA matrix obtained from the color features from Exercise 7. More specifically, optTheta contains w and b of the neurons, and ZCAWhite represents the processing matrix of ZCA whitening;<br>
     2. we use `w * ZCAWhite` as each feature (convolution matrix), where w is the corresponding weights from the input neurons to the specific hidden neuron, extraced from optTheta.<br>
   
   2. im: represents the patterns of specific image at specific color channel.<br>
@@ -107,7 +107,7 @@ Solutions to the Exercises of [UFLDL (Unsupervised Feature Learning and Deep Lea
   1. Initialization of parameters;<br>
   2. Train a sparse autoencoder (with a linear decoder) to learn: we simply use the result of Exercise 7. Here three objects are used:
     1. optTheta: theta (w and b) of the autoencoder
-    2. ZCAWhite: the ZCA whiting matrix
+    2. ZCAWhite: the ZCA whitening matrix
     3. meanPatch: mean of the patches
   
   3. Test convolution: use `cnnConvolve.m` to test the convolution.
