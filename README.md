@@ -131,7 +131,6 @@ Solutions to the Exercises of [UFLDL (Unsupervised Feature Learning and Deep Lea
     * autoencode: vector of images to train the autoencoder (whatever×1) ==> convolution matirx (8×8);<br>
     * convolute: pathces (convolution matirx) (8×8) + image to convolute (64×64) ==> convolutedFeature (57×57);<br>
     * pool(size=19): convolutedFeature (57×57) ==> pooledFeature (3×3).<br>
-    Note that number of input units (visibleSize) = patchDim × patchDim × imageChannels = 8×8×3.<br>
   
 
 
