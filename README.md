@@ -95,6 +95,9 @@ Solutions to the Exercises of [UFLDL (Unsupervised Feature Learning and Deep Lea
   2. im: represents the patterns of specific image at specific color channel.<br>
   3. `convolvedImage += conv2(im, feature, 'valid')`: the convolution process.<br>
 
+  * As described in topic 8.3, the calculation using w, b and ZCAWhite can be abstracted as:<br>
+  “_Taking the preprocessing steps into account, the feature activations that you should compute is σ(W(T(x-u)) + b), where T is the whitening matrix and u is the mean patch. Expanding this, you obtain σ(WTx - WTu + b), which suggests that you should convolve the images with WT rather than W as earlier, and you should add (b - WTu), rather than just b to convolvedFeatures, before finally applying the sigmoid function._”<br>
+
 * `cnnPool.m`: This function do the pooling. The return value pooledFeatures is of dim 4:<br>
   1. numFeatures: number of features (i.e. convolution kernels/masks/convolution matrices);<br>
   2. numImages: equals number of images to convolve;<br>
@@ -119,6 +122,10 @@ Solutions to the Exercises of [UFLDL (Unsupervised Feature Learning and Deep Lea
   
   6. Use pooled features for classification: Here we choose to use softmax classifier;<br>
   7. Test classifier. You should expect to get an accuracy of around 80% on the test images.<br>
+
+
+  * As described in topic 8.1, step 2 and step 5 (convolution part) can be abstracted as:<br>
+  “_Given some large r × c images xlarge, we first train a sparse autoencoder on small a × b patches xsmall sampled from these images, learning k features f = σ(W(1) × xsmall + b(1)) (where σ is the sigmoid function), given by the weights W(1) and biases b(1) from the visible units to the hidden units. For every a × b patch xs in the large image, we compute fs = σ(W(1) × xs + b(1)), giving us fconvolved, a k × (r - a + 1) × (c - b + 1) array of convolved features._”<br>
   
 
 
