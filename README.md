@@ -128,9 +128,9 @@ Solutions to the Exercises of [UFLDL (Unsupervised Feature Learning and Deep Lea
   “_Given some large r × c images xlarge, we first train a sparse autoencoder on small a × b patches xsmall sampled from these images, learning k features f = σ(W(1) × xsmall + b(1)) (where σ is the sigmoid function), given by the weights W(1) and biases b(1) from the visible units to the hidden units. For every a × b patch xs in the large image, we compute fs = σ(W(1) × xs + b(1)), giving us fconvolved, a k × (r - a + 1) × (c - b + 1) array of convolved features._”<br>
 
   * The change of dimension can be abstacted as:<br>
-    * autoencoder: vector of images to train the autoencoder (whatever×1) ====> convolution matirx (8×8);<br>
-    * convolution: pathces (convolution matirx) (8×8) + image to convolute (64×64) ====> convolutedFeature (57×57);<br>
-    * pooling(size=19): convolutedFeature (57×57) ====> pooledFeature (3×3).<br>
+    * autoencode: vector of images to train the autoencoder (whatever×1) ==> convolution matirx (8×8);<br>
+    * convolute: pathces (convolution matirx) (8×8) + image to convolute (64×64) ==> convolutedFeature (57×57);<br>
+    * pool(size=19): convolutedFeature (57×57) ==> pooledFeature (3×3).<br>
     Note that number of input units (visibleSize) = patchDim × patchDim × imageChannels = 8×8×3.<br>
   
 
