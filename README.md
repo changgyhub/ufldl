@@ -1,5 +1,5 @@
-# UFLDL (Unsupervised Feature Learning and Deep Learning) Tutorial Solutions
-Solutions to the Exercises of [UFLDL Tutorial](http://ufldl.stanford.edu/wiki/index.php/UFLDL_Tutorial "UFLDL Tutorial by Andrew Ng, etc.") (2016).
+# UFLDL Tutorial Solutions
+Solutions to the Exercises of [UFLDL (Unsupervised Feature Learning and Deep Learning) Tutorial](http://ufldl.stanford.edu/wiki/index.php/UFLDL_Tutorial "UFLDL Tutorial by Andrew Ng, etc.") (2016).
 ##@I will upload those files once I finish all of the exercises.@
 
 ##Exercise 1: Sparse Autoencoder
