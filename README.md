@@ -1,5 +1,5 @@
 # UFLDL (Unsupervised Feature Learning and Deep Learning) Tutorial Solutions
-Solutions to the Exercises of [UFLDL Tutorial](http://ufldl.stanford.edu/wiki/index.php/UFLDL_Tutorial) (2016).
+Solutions to the Exercises of [UFLDL Tutorial](http://ufldl.stanford.edu/wiki/index.php/UFLDL_Tutorial "UFLDL Tutorial by Andrew Ng, etc.") (2016).
 ##@I will upload those files once I finish all of the exercises.@
 
 ##Exercise 1: Sparse Autoencoder
@@ -76,3 +76,34 @@ Solutions to the Exercises of [UFLDL Tutorial](http://ufldl.stanford.edu/wiki/in
 #####The following files are the core of this exercise:<br>
 * `sparseAutoencoderLinearCost.m`: modified from `sparseAutoencoderCost.m` in Exercise 1, so that f(·) and delta of the last level is set to identity ("linear") to generate color representations rather than 0~1 gray color.<br>
 * `linearDecoderExercise.m`: The overall procedure, including Setting parameters, Gradient checking of the linear decoder, Load patches, ZCA whiting, Learning features (using autoencoder with linear decoder), Visualization.<br>
+
+##Exercise 8: Convolution and Pooling
+######This Exercise is extremely important, you are highly recomanded to read `cnnExercise.m`, `cnnConvolve.m` and `cnnPool.m` thoroughly.
+#####The following files are the core of this exercise:<br>
+* `cnnConvolve.m`: This function do the convolution. The return value __convolvedFeatures__ is of dim 4:<br>
+  1. numFeatures: equals number of hidden units in the network, we use this as number of features (i.e. convolution kernels/masks/convolution matrices);<br>
+  2. numImages: equals number of images to convolve;<br>
+  3. imageDim - patchDim + 1: equals the dimension of convoluted image;<br>
+  4. imageDim - patchDim + 1: equals the dimension of convoluted image.<br>
+  
+  Moreover, the 3rd and 4th dimension is composed of __convolvedImage__, which is computed by:<br>
+
+  1. feature: represents the convolution matrix, it is computed by:<br>
+    1. obtain optTheta and ZCAWhite: these are the theta and ZCA matrix obtained from the color features from Exercise 7. More specifically, optTheta contains w and b of the neurons, and ZCAWhite represents the processing matrix of ZCA whiting;<br>
+    2. we use `w * ZCAWhite` as each feature (convolution matrix), where w is the corresponding weights from the input neurons to the specific hidden neuron, extraced from optTheta.<br>
+  
+  2. im: represents the patterns of specific image at specific color channel.<br>
+  3. `convolvedImage += conv2(im, feature, 'valid')`: the convolution process.<br>
+
+* `cnnPool.m`: This function do the pooling. The return value pooledFeatures is of dim 4:<br>
+  1. numFeatures: number of features (i.e. convolution kernels/masks/convolution matrices);<br>
+  2. numImages: equals number of images to convolve;<br>
+  3. resultDim: equals floor(convolvedDim / poolDim), which is the result dimension;<br>
+  4. resultDim: equals floor(convolvedDim / poolDim), which is the result dimension.<br>
+  
+  We simply take the mean of each poolDim*poolDim.<br>
+
+* `cnnExercise.m`: The overall procedure, including<br>
+  1. ;<br>
+
+
