@@ -143,18 +143,18 @@ Solutions to the Exercises of [UFLDL (Unsupervised Feature Learning and Deep Lea
   4. Iterative optimization:<br>
     1. Select a random mini-batch;<br>
     2. Initialize s:<br>
-      1. Set s = W^Tx (where x is the matrix of patches in the mini-batch);<br>
-      2. For each feature in s (i.e. each column of s), divide the feature by the norm of the corresponding basis vector in A.<br>
-    3. Optimize for feature matrix 's';<br>
-    4. Optimize for weight matrix 'A'. Actually here we can directly derive the result as discribed before.<br>
+      1. Set _s = W^Tx_ (where _x_ is the matrix of patches in the mini-batch);<br>
+      2. For each feature in _s_ (i.e. each column of _s_), divide the feature by the norm of the corresponding basis vector in _A_.<br>
+    3. Optimize for feature matrix _s_;<br>
+    4. Optimize for weight matrix _A_. Actually here we can directly derive the result as discribed before.<br>
     5. Visualize result at the end of this iteration.<br> 
 
 #####Notes in `sparseCodingExercise.m`:
 * In Step 0, we choose patches to be 16 × 16 instead of 8 × 8, and number of features to learn to be 18 × 18 instead of 11 × 11 to obtain better visual results. Also, lamda, epsilon and gamma can also be adjusted to obtain better results.<br>
-* When iterating, we use 'cg' (conjugate gradient) instead of 'lbfgs', because lbfgs will make steeper steps and lead to worse results. One alternative is to use lbfgs while decreasing iterations (e.g. options.maxIter=15), or increasing dimension of the grouping region for topographic sparse coding (e.g. poolDim=5) so that the sparse code will be used in larger areas and therefore avoid over-accuracy of 's'.<br>
+* When iterating, we use 'cg' (conjugate gradient) instead of 'lbfgs', because lbfgs will make steeper steps and lead to worse results. One alternative is to use lbfgs while decreasing iterations (e.g. options.maxIter=15), or increasing dimension of the grouping region for topographic sparse coding (e.g. poolDim=5) so that the sparse code will be used in larger areas and therefore avoid over-accuracy of _s_.<br>
 
 #####Other Notes:
-* Since we minimize 's' and 'A' alternatively, the cost may not be decreasing all the time, but the overall trend should be.<br>
+* Since we minimize _s_ and _A_ alternatively, the cost may not be decreasing all the time, but the overall trend should be.<br>
 * There are two changes in `sampleIMAGES.m`:
   1. Three parameters (images, patchDim, numPatches) are added to the function, so that we can customize patch choice;<br>
   2. The rescaling from [-1, 1] to [0.1, 0.9] is deleted, because we have to ensure an average of 0. (see comment for explanation).<br>
