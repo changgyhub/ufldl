@@ -138,8 +138,8 @@ Solutions to the Exercises of [UFLDL (Unsupervised Feature Learning and Deep Lea
 * `sparseCodingWeightCost.m`: This function calculates J(A) and ▽J(A) when s is set. Actually in our process, the optimal solution can be directly derived and therefore this function is useless.<br>
 * `sparseCodingExercise.m`: The overall procedure, including<br>
   1. Initialization of parameters. Here each parameter means a lot, and change of anyone will make a huge difference, see Notes;<br>
-  2. Load patches sampled from the original image data.<br>
-  3. (the checking process is ignored to save time)<br>
+  2. Load patches sampled from the original image data;<br>
+  3. Checking (the checking process is ignored to save time);<br>
   4. Iterative optimization:<br>
     1. Select a random mini-batch;<br>
     2. Initialize s:<br>
@@ -150,11 +150,11 @@ Solutions to the Exercises of [UFLDL (Unsupervised Feature Learning and Deep Lea
     5. Visualize result at the end of this iteration.<br> 
 
 #####Notes in `sparseCodingExercise.m`:
-* In Step 0, we choose patches to be 16 × 16 instead of 8 × 8, and number of features to learn to be 18 × 18 instead of 11 × 11 to obtain better visual results. Also, lamda, epsilon and gamma can also be adjusted to obtain better results.
-* When iterating, we use 'cg' (conjugate gradient) instead of 'lbfgs', because lbfgs will make steeper steps and lead to worse results. One alternative is to use lbfgs while decreasing iterations (e.g. options.maxIter=15), or increasing dimension of the grouping region for topographic sparse coding (e.g. poolDim=5) so that the sparse code will be used in larger areas and therefore avoid over-accuracy of 's'.
+* In Step 0, we choose patches to be 16 × 16 instead of 8 × 8, and number of features to learn to be 18 × 18 instead of 11 × 11 to obtain better visual results. Also, lamda, epsilon and gamma can also be adjusted to obtain better results.<br>
+* When iterating, we use 'cg' (conjugate gradient) instead of 'lbfgs', because lbfgs will make steeper steps and lead to worse results. One alternative is to use lbfgs while decreasing iterations (e.g. options.maxIter=15), or increasing dimension of the grouping region for topographic sparse coding (e.g. poolDim=5) so that the sparse code will be used in larger areas and therefore avoid over-accuracy of 's'.<br>
 
 #####Other Notes:
-* Since we minimize 's' and 'A' alternatively, the cost may not be decreasing all the time, but the overall trend should be.
+* Since we minimize 's' and 'A' alternatively, the cost may not be decreasing all the time, but the overall trend should be.<br>
 * There are two changes in `sampleIMAGES.m`:
   1. Three parameters (images, patchDim, numPatches) are added to the function, so that we can customize patch choice;<br>
   2. The rescaling from [-1, 1] to [0.1, 0.9] is deleted, because we have to ensure an average of 0. (see comment for explanation).<br>
