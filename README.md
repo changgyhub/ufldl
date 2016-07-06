@@ -1,6 +1,6 @@
 # UFLDL Tutorial Solutions
 Solutions to the Exercises of [UFLDL (Unsupervised Feature Learning and Deep Learning) Tutorial](http://ufldl.stanford.edu/wiki/index.php/UFLDL_Tutorial "UFLDL Tutorial by Andrew Ng, etc.") (2016).
-###@I will upload those files once I finish all of the exercises. The remaining exercises are Sparse Coding and Independent Component Analysis.@
+###@I will upload those files once I finish all of the exercises. The remaining exercises are Independent Component Analysis.@
 
 ##Exercise 1: Sparse Autoencoder
 #####The following files are the core of this exercise:<br>
@@ -9,7 +9,7 @@ Solutions to the Exercises of [UFLDL (Unsupervised Feature Learning and Deep Lea
 * `computeNumericalGradient.m`: Do the gradient test. This part should be skipped for future examples because it cost huge amount of time.<br>
 * `test.m`: The overall procedure<br>
 
-#####Note:
+#####Notes:
 * We use a vectorized version already in the first implementation of `sparseAutoencoderCost.m`. An unvectored and bit inelegant implementation is commented after it.
 
 ##Exercise 2: Vectorized Sparse Autoencoder
@@ -18,7 +18,7 @@ Solutions to the Exercises of [UFLDL (Unsupervised Feature Learning and Deep Lea
 * `test.m`: The overall procedure. Notice that this time we use another set of images (and labels), with parameters altered.<br>
 * some .m files to read the images (and labels), see `info\Using the MNIST Dataset.docx`<br>
 
-#####Note:
+#####Notes:
 * the result of training is still unsatisfying.
 
 ##Exercise 3A: PCA 2D
@@ -40,7 +40,7 @@ Solutions to the Exercises of [UFLDL (Unsupervised Feature Learning and Deep Lea
 * `feedForwardAutoencoder.m`: convert the raw image data to hidden unit activations a(2).<br>
 * `stlExercise.m`: The overall procedure, including Setting parameters, Load data from the MNIST database (and divided into labled and unlabled data sets), Train the sparse autoencoder with unlabled data set (like Exercise 2), Extract Features from the Supervised Dataset (using `feedForwardAutoencoder.m`, based on the w(1) form the autoencoder), Train the softmax classifier (based on the input from the extracted features), Testing with test datas.<br>
 
-#####Note:
+#####Notes:
 * The whole procedure can be explained as:<br>
   1. Use sparse autoencoder to train unlabled data and get w(1) and w(2);<br>
   2. Use self-taught learning to  obtain a(2) using w(1);<br>
@@ -66,7 +66,7 @@ Solutions to the Exercises of [UFLDL (Unsupervised Feature Learning and Deep Lea
 
 * `stackedAEPredict.m`: Use trained network to test data.<br>
 
-#####Note:
+#####Notes:
 * The levels in `stackedAECost.m` are:<br>
   1. input level: level 1;<br>
   2. hidden levels: level 2 ~ depth+1, more specifically, it should be level 2 and 3, level 3 and 4 ... level depth and depth +1, where level i is the input level of the stacked autoencoder and level i+1 is the second level to self-teach;<br>
@@ -131,6 +131,30 @@ Solutions to the Exercises of [UFLDL (Unsupervised Feature Learning and Deep Lea
     * autoencode: vector of images to train the autoencoder (whatever×1) ==> convolution matirx (8×8);<br>
     * convolute: pathces (convolution matirx) (8×8) + image to convolute (64×64) ==> convolutedFeature (57×57);<br>
     * pool(size=19): convolutedFeature (57×57) ==> pooledFeature (3×3).<br>
-  
 
+##Exercise 9: Sparse Coding
+#####The following files are the core of this exercise:<br>
+* `sparseCodingFeatureCost.m`: This function calculates J(s) and ▽J(s) when A is set.<br>
+* `sparseCodingWeightCost.m`: This function calculates J(A) and ▽J(A) when s is set. Actually in our process, the optimal solution can be directly derived and therefore this function is useless.<br>
+* `sparseCodingExercise.m`: The overall procedure, including<br>
+  1. Initialization of parameters. Here each parameter means a lot, and change of anyone will make a huge difference, see Notes;<br>
+  2. Load patches sampled from the original image data.<br>
+  3. (the checking process is ignored to save time)<br>
+  4. Iterative optimization:<br>
+    1. Select a random mini-batch;<br>
+    2. Initialize s:<br>
+      1. Set s = W^Tx (where x is the matrix of patches in the mini-batch);<br>
+      2. For each feature in s (i.e. each column of s), divide the feature by the norm of the corresponding basis vector in A.<br>
+    3. Optimize for feature matrix 's';<br>
+    4. Optimize for weight matrix 'A'. Actually here we can directly derive the result as discribed before.<br>
+    5. Visualize result at the end of this iteration.<br> 
 
+#####Notes in `sparseCodingExercise.m`:
+* In Step 0, we choose patches to be 16 × 16 instead of 8 × 8, and number of features to learn to be 18 × 18 instead of 11 × 11 to obtain better visual results. Also, lamda, epsilon and gamma can also be adjusted to obtain better results.
+* When iterating, we use 'cg' (conjugate gradient) instead of 'lbfgs', because lbfgs will make steeper steps and lead to worse results. One alternative is to use lbfgs while decreasing iterations (e.g. options.maxIter=15), or increasing dimension of the grouping region for topographic sparse coding (e.g. poolDim=5) so that the sparse code will be used in larger areas and therefore avoid over-accuracy of 's'.
+
+#####Other Notes:
+* Since we minimize 's' and 'A' alternatively, the cost may not be decreasing all the time, but the overall trend should be.
+* There are two changes in `sampleIMAGES.m`:
+  1. Three parameters (images, patchDim, numPatches) are added to the function, so that we can customize patch choice;<br>
+  2. The rescaling from [-1, 1] to [0.1, 0.9] is deleted, because we have to ensure an average of 0. (see comment for explanation).<br>
