@@ -158,3 +158,11 @@ Solutions to the Exercises of [UFLDL (Unsupervised Feature Learning and Deep Lea
 * There are two changes in `sampleIMAGES.m`:
   1. Three parameters (images, patchDim, numPatches) are added to the function, so that we can customize patch choice;<br>
   2. The rescaling from [-1, 1] to [0.1, 0.9] is deleted, because we have to ensure an average of 0. (see comment for explanation).<br>
+
+##Exercise 10: ICA
+#####The following files are the core of this exercise:<br>
+* `orthonormalICACost.m`: compute J and ▽J. See [here](http://ufldl.stanford.edu/wiki/index.php/Deriving_gradients_using_the_backpropagation_idea "Deriving gradients using the backpropagation idea") for the method of calculating gradient. Notice that here we use L2 norm instead of L1 to compute J. An intoduction to L0, L1, L2 norm can be found at [here](http://blog.csdn.net/zouxy09/article/details/24971995 "机器学习中的范数规则化之（一）L0、L1与L2范数") (in Chinese).<br>
+* `ICAExercise.m`: The overall procedure, including Initialization of parameters, Sample patches, ZCA whiten patches, Gradient checking, and Optimization for orthonormal ICA.<br>
+
+#####Notes:
+* This exercise will take around 1-2 days for a laptop to run.<br>
