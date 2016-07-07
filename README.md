@@ -4,10 +4,10 @@ Solutions to the Exercises of [UFLDL (Unsupervised Feature Learning and Deep Lea
 
 ##Exercise 1: Sparse Autoencoder
 #####The following files are the core of this exercise:<br>
-* `sampleIMAGES.m`: Load IMAGES.mat and randomly choose paterns to train<br>
+* `sampleIMAGES.m`: Load IMAGES.mat and randomly choose paterns to train.<br>
 * `sparseAutoencoderCost.m`: Front and back propagation. Note that two implementation methods are provided.<br>
 * `computeNumericalGradient.m`: Do the gradient test. This part should be skipped for future examples because it cost huge amount of time.<br>
-* `test.m`: The overall procedure<br>
+* `test.m`: The overall procedure.<br>
 
 #####Notes:
 * We use a vectorized version already in the first implementation of `sparseAutoencoderCost.m`. An unvectored and bit inelegant implementation is commented after it.
@@ -16,7 +16,7 @@ Solutions to the Exercises of [UFLDL (Unsupervised Feature Learning and Deep Lea
 #####The following files are the core of this exercise:<br>
 * `sparseAutoencoderCost.m`: Front and back propagation. Note that two implementation methods are provided.<br>
 * `test.m`: The overall procedure. Notice that this time we use another set of images (and labels), with parameters altered.<br>
-* some .m files to read the images (and labels), see `info\Using the MNIST Dataset.docx`<br>
+* some .m files to read the images (and labels), see `info\Using the MNIST Dataset.docx`.<br>
 
 #####Notes:
 * the result of training is still unsatisfying.
