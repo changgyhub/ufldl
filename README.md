@@ -1,6 +1,5 @@
 # UFLDL Tutorial Solutions
 Solutions to the Exercises of [UFLDL (Unsupervised Feature Learning and Deep Learning) Tutorial](http://ufldl.stanford.edu/wiki/index.php/UFLDL_Tutorial "UFLDL Tutorial by Andrew Ng, etc.") (2016).
-###@I will upload those files when I finish checking Exercise 2 and 10.@
 
 ##Exercise 1: Sparse Autoencoder
 #####The following files are the core of this exercise:<br>
@@ -18,8 +17,6 @@ Solutions to the Exercises of [UFLDL (Unsupervised Feature Learning and Deep Lea
 * `test.m`: The overall procedure. Notice that this time we use another set of images (and labels), with parameters altered.<br>
 * some .m files to read the images (and labels), see `info\Using the MNIST Dataset.docx`.<br>
 
-#####Notes:
-* the result of training is still unsatisfying.
 
 ##Exercise 3A: PCA 2D
 #####The following files are the core of this exercise:<br>
