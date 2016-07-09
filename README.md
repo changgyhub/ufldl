@@ -143,7 +143,7 @@ Solutions to the Exercises of [UFLDL (Unsupervised Feature Learning and Deep Lea
   4. Iterative optimization:<br>
     1. Select a random mini-batch;<br>
     2. Initialize s:<br>
-      1. Set _s = W^Tx_ (where _x_ is the matrix of patches in the mini-batch);<br>
+      1. Set _s = A^Tx_ (where _x_ is the matrix of patches in the mini-batch);<br>
       2. For each feature in _s_ (i.e. each column of _s_), divide the feature by the norm of the corresponding basis vector in _A_.<br>
     3. Optimize for feature matrix _s_;<br>
     4. Optimize for weight matrix _A_. Actually here we can directly derive the result as discribed before.<br>
