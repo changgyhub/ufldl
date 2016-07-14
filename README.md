@@ -1,6 +1,6 @@
 # UFLDL Tutorial Solutions
 Solutions to the Exercises of UFLDL Tutorial [Old version](http://ufldl.stanford.edu/wiki/index.php/UFLDL_Tutorial "UFLDL Tutorial by Andrew Ng, etc. - Old version") and [New version](http://ufldl.stanford.edu/tutorial/ "UFLDL Tutorial by Andrew Ng, etc. - New version") (2016).<br><br>
-Some of the files, espacially images and mats, cannot be uploaded due to size contraint. Please download them from the tutorial website. Exercise 1 ~ 10 are the correspoding exercises of the old version, and Exercise 11 ~ are the new exercises of the new version.<br>
+Some of the files, espacially images and mats, cannot be uploaded due to size contraint. Please download them from the tutorial website.<br>
 
 ##Exercise 1: Sparse Autoencoder
 #####The following files are the core of this exercise:<br>
@@ -75,7 +75,7 @@ Some of the files, espacially images and mats, cannot be uploaded due to size co
 * `sparseAutoencoderLinearCost.m`: modified from `sparseAutoencoderCost.m` in Exercise 1, so that f(·) and delta of the last level is set to identity ("linear") to generate color representations rather than 0~1 gray color.<br>
 * `linearDecoderExercise.m`: The overall procedure, including Setting parameters, Gradient checking of the linear decoder, Load patches, ZCA whitening, Learning features (using autoencoder with linear decoder), Visualization.<br>
 
-##Exercise 8: Convolution and Pooling
+##Exercise 8: Convolutional Neural Networks
 ######This Exercise is extremely important, you are highly recomanded to read `cnnExercise.m`, `cnnConvolve.m` and `cnnPool.m` thoroughly.
 #####The following files are the core of this exercise:<br>
 * `cnnConvolve.m`: This function do the convolution. The return value __convolvedFeatures__ is of dim 4:<br>
@@ -164,6 +164,3 @@ Some of the files, espacially images and mats, cannot be uploaded due to size co
 
 #####Notes:
 * This exercise will take around 1-2 days for a laptop to run.<br>
-
-##Exercise 11: Convolutional Neural Network
-#####The following files are the core of this exercise:<br>
