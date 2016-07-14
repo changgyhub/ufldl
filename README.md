@@ -75,7 +75,7 @@ Some of the files, espacially images and mats, cannot be uploaded due to size co
 * `sparseAutoencoderLinearCost.m`: modified from `sparseAutoencoderCost.m` in Exercise 1, so that f(·) and delta of the last level is set to identity ("linear") to generate color representations rather than 0~1 gray color.<br>
 * `linearDecoderExercise.m`: The overall procedure, including Setting parameters, Gradient checking of the linear decoder, Load patches, ZCA whitening, Learning features (using autoencoder with linear decoder), Visualization.<br>
 
-##Exercise 8: Convolutional Neural Networks
+##Exercise 8: Convolutional Neural Network
 ######This Exercise is extremely important, you are highly recomanded to read `cnnExercise.m`, `cnnConvolve.m` and `cnnPool.m` thoroughly.
 #####The following files are the core of this exercise:<br>
 * `cnnConvolve.m`: This function do the convolution. The return value __convolvedFeatures__ is of dim 4:<br>
