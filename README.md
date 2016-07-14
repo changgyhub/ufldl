@@ -1,6 +1,6 @@
 # UFLDL Tutorial Solutions
-Solutions to the Exercises of [UFLDL (Unsupervised Feature Learning and Deep Learning) Tutorial](http://ufldl.stanford.edu/wiki/index.php/UFLDL_Tutorial "UFLDL Tutorial by Andrew Ng, etc.") (2016).<br><br>
-Some of the files, espacially images and mats, cannot be uploaded due to size contraint. Please download them from the tutorial website.<br>
+Solutions to the Exercises of UFLDL Tutorial [Old version](http://ufldl.stanford.edu/wiki/index.php/UFLDL_Tutorial "UFLDL Tutorial by Andrew Ng, etc. - Old version") and [New version](http://ufldl.stanford.edu/tutorial/ "UFLDL Tutorial by Andrew Ng, etc. - New version") (2016).<br><br>
+Some of the files, espacially images and mats, cannot be uploaded due to size contraint. Please download them from the tutorial website. Exercise 1 ~ 10 are the correspoding exercises of the old version, and Exercise 11 ~ are the new exercises of the new version.<br>
 
 ##Exercise 1: Sparse Autoencoder
 #####The following files are the core of this exercise:<br>
@@ -164,3 +164,6 @@ Some of the files, espacially images and mats, cannot be uploaded due to size co
 
 #####Notes:
 * This exercise will take around 1-2 days for a laptop to run.<br>
+
+##Exercise 11: Convolutional Neural Network
+#####The following files are the core of this exercise:<br>
