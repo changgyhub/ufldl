@@ -34,7 +34,7 @@ Some of the files, espacially images and mats, cannot be uploaded due to size co
 * `test.m`: The overall procedure, including Initialise constants and parameters, Load data, Implement softmaxCost (using `softmaxCost.m`), Gradient checking (using `computeNumericalGradient.m` in Exercise 1), Learning parameters (using `softmaxTrain.m` which minimizes `softmaxCost.m` by L-BFGS), Testing with test datas.<br>
 
 ## Exercise 5: Self-Taught Learning
-#####T he following files are the core of this exercise:<br>
+##### The following files are the core of this exercise:<br>
 * `feedForwardAutoencoder.m`: convert the raw image data to hidden unit activations a(2).<br>
 * `stlExercise.m`: The overall procedure, including Setting parameters, Load data from the MNIST database (and divided into labled and unlabled data sets), Train the sparse autoencoder with unlabled data set (like Exercise 2), Extract Features from the Supervised Dataset (using `feedForwardAutoencoder.m`, based on the w(1) form the autoencoder), Train the softmax classifier (based on the input from the extracted features), Testing with test datas.<br>
 
