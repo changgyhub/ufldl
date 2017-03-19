@@ -2,52 +2,52 @@
 Solutions to the Exercises of UFLDL Tutorial [Old version](http://ufldl.stanford.edu/wiki/index.php/UFLDL_Tutorial "UFLDL Tutorial by Andrew Ng, etc. - Old version") and [New version](http://ufldl.stanford.edu/tutorial/ "UFLDL Tutorial by Andrew Ng, etc. - New version") (2016).<br><br>
 Some of the files, espacially images and mats, cannot be uploaded due to size contraint. Please download them from the tutorial website.<br>
 
-##Exercise 1: Sparse Autoencoder
-#####The following files are the core of this exercise:<br>
+## Exercise 1: Sparse Autoencoder
+##### The following files are the core of this exercise:<br>
 * `sampleIMAGES.m`: Load IMAGES.mat and randomly choose paterns to train.<br>
 * `sparseAutoencoderCost.m`: Front and back propagation. Note that two implementation methods are provided.<br>
 * `computeNumericalGradient.m`: Do the gradient test. This part should be skipped for future examples because it cost huge amount of time.<br>
 * `test.m`: The overall procedure.<br>
 
-#####Notes:
+##### Notes:
 * We use a vectorized version already in the first implementation of `sparseAutoencoderCost.m`. An unvectored and bit inelegant implementation is commented after it.
 
-##Exercise 2: Vectorized Sparse Autoencoder
-#####The following files are the core of this exercise:<br>
+## Exercise 2: Vectorized Sparse Autoencoder
+##### The following files are the core of this exercise:<br>
 * `sparseAutoencoderCost.m`: Front and back propagation. Note that two implementation methods are provided.<br>
 * `test.m`: The overall procedure. Notice that this time we use another set of images (and labels), with parameters altered.<br>
 * some .m files to read the images (and labels), see `info\Using the MNIST Dataset.docx`.<br>
 
 
-##Exercise 3A: PCA 2D
-#####The following files are the core of this exercise:<br>
+## Exercise 3A: PCA 2D
+##### The following files are the core of this exercise:<br>
 * `pca_2d.m`: Including Finding the PCA basis, Checking xRot, Dimension reduce and replot, PCA Whitening and ZCA Whitening.<br>
 
-##Exercise 3B: PCA and Whitening
-#####The following files are the core of this exercise:<br>
+## Exercise 3B: PCA and Whitening
+##### The following files are the core of this exercise:<br>
 * `pca_gen.m`: Including Load and zero mean the data, Implement PCA (and check covariance), Find number of components to retain, PCA with dimension reduction, PCA with whitening and regularization (and check covariance), ZCA whitening.<br>
 
-##Exercise 4: Softmax Regression
-#####The following files are the core of this exercise:<br>
+## Exercise 4: Softmax Regression
+##### The following files are the core of this exercise:<br>
 * `softmaxCost.m`: Compute the softmax cost function J(θ) and its gradient.<br>
 * `softmaxPredict.m`: Compute the predicted lable (classification) using calculated theta and data under test.<br>
 * `test.m`: The overall procedure, including Initialise constants and parameters, Load data, Implement softmaxCost (using `softmaxCost.m`), Gradient checking (using `computeNumericalGradient.m` in Exercise 1), Learning parameters (using `softmaxTrain.m` which minimizes `softmaxCost.m` by L-BFGS), Testing with test datas.<br>
 
-##Exercise 5: Self-Taught Learning
-#####The following files are the core of this exercise:<br>
+## Exercise 5: Self-Taught Learning
+#####T he following files are the core of this exercise:<br>
 * `feedForwardAutoencoder.m`: convert the raw image data to hidden unit activations a(2).<br>
 * `stlExercise.m`: The overall procedure, including Setting parameters, Load data from the MNIST database (and divided into labled and unlabled data sets), Train the sparse autoencoder with unlabled data set (like Exercise 2), Extract Features from the Supervised Dataset (using `feedForwardAutoencoder.m`, based on the w(1) form the autoencoder), Train the softmax classifier (based on the input from the extracted features), Testing with test datas.<br>
 
-#####Notes:
+##### Notes:
 * The whole procedure can be explained as:<br>
   1. Use sparse autoencoder to train unlabled data and get w(1) and w(2);<br>
   2. Use self-taught learning to  obtain a(2) using w(1);<br>
   3. Use Softmax Regression to train labled data (a(2), y) and optimize theta (the new w(2) in final network).<br>
 * The overall procedure is explained in topic 6.1. Notice that with fine-tuning (introduced in topic 6), we can also optimize w(1) with optimization methods when training labled data.<br><br>
 
-##Exercise 6: Stacked Autoencoder for Digit Classification
-######This Exercise is extremely important, you are highly recomanded to read `stackedAECost.m`, `stackedAEPredict.m` and `stackedAEExercise.m` thoroughly.
-#####The following files are the core of this exercise:<br>
+## Exercise 6: Stacked Autoencoder for Digit Classification
+###### This Exercise is extremely important, you are highly recomanded to read `stackedAECost.m`, `stackedAEPredict.m` and `stackedAEExercise.m` thoroughly.
+##### The following files are the core of this exercise:<br>
 * `stackedAECost.m`: This function do the fine-tuning, including<br>
   1. Feed Forward Autoencoder for the hidden levels (level 2 ~ depth+1);<br>
   2. Compute J and ▽ J for the softmax level (level depth+2);<br>
@@ -64,20 +64,20 @@ Some of the files, espacially images and mats, cannot be uploaded due to size co
 
 * `stackedAEPredict.m`: Use trained network to test data.<br>
 
-#####Notes:
+##### Notes:
 * The levels in `stackedAECost.m` are:<br>
   1. input level: level 1;<br>
   2. hidden levels: level 2 ~ depth+1, more specifically, it should be level 2 and 3, level 3 and 4 ... level depth and depth +1, where level i is the input level of the stacked autoencoder and level i+1 is the second level to self-teach;<br>
   3. softmax level: level depth+2.<br>
 
-##Exercise 7: Linear Decoder on Color Features
-#####The following files are the core of this exercise:<br>
+## Exercise 7: Linear Decoder on Color Features
+##### The following files are the core of this exercise:<br>
 * `sparseAutoencoderLinearCost.m`: modified from `sparseAutoencoderCost.m` in Exercise 1, so that f(·) and delta of the last level is set to identity ("linear") to generate color representations rather than 0~1 gray color.<br>
 * `linearDecoderExercise.m`: The overall procedure, including Setting parameters, Gradient checking of the linear decoder, Load patches, ZCA whitening, Learning features (using autoencoder with linear decoder), Visualization.<br>
 
-##Exercise 8: Convolution and Pooling
-######This Exercise is extremely important, you are highly recomanded to read `cnnExercise.m`, `cnnConvolve.m` and `cnnPool.m` thoroughly.
-#####The following files are the core of this exercise:<br>
+## Exercise 8: Convolution and Pooling
+###### This Exercise is extremely important, you are highly recomanded to read `cnnExercise.m`, `cnnConvolve.m` and `cnnPool.m` thoroughly.
+##### The following files are the core of this exercise:<br>
 * `cnnConvolve.m`: This function do the convolution. The return value __convolvedFeatures__ is of dim 4:<br>
   1. numFeatures: equals number of hidden units in the network, we use this as number of features (i.e. convolution kernels/masks/convolution matrices);<br>
   2. numImages: equals number of images to convolve;<br>
@@ -130,8 +130,8 @@ Some of the files, espacially images and mats, cannot be uploaded due to size co
     * convolute: pathces (convolution matirx) (8×8) + image to convolute (64×64) ==> convolutedFeature (57×57);<br>
     * pool(size=19): convolutedFeature (57×57) ==> pooledFeature (3×3).<br>
 
-##Exercise 9: Sparse Coding
-#####The following files are the core of this exercise:<br>
+## Exercise 9: Sparse Coding
+##### The following files are the core of this exercise:<br>
 * `sparseCodingFeatureCost.m`: This function calculates J(s) and ▽J(s) when A is set.<br>
 * `sparseCodingWeightCost.m`: This function calculates J(A) and ▽J(A) when s is set. Actually in our process, the optimal solution can be directly derived and therefore this function is useless.<br>
 * `sparseCodingExercise.m`: The overall procedure, including<br>
@@ -147,20 +147,20 @@ Some of the files, espacially images and mats, cannot be uploaded due to size co
     4. Optimize for weight matrix _A_. Actually here we can directly derive the result as discribed before.<br>
     5. Visualize result at the end of this iteration.<br> 
 
-#####Notes in `sparseCodingExercise.m`:
+##### Notes in `sparseCodingExercise.m`:
 * In Step 0, we choose patches to be 16 × 16 instead of 8 × 8, and number of features to learn to be 18 × 18 instead of 11 × 11 to obtain better visual results. Also, lamda, epsilon and gamma can also be adjusted to obtain better results.<br>
 * When iterating, we use 'cg' (conjugate gradient) instead of 'lbfgs', because lbfgs will make steeper steps and lead to worse results. One alternative is to use lbfgs while decreasing iterations (e.g. options.maxIter=15), or increasing dimension of the grouping region for topographic sparse coding (e.g. poolDim=5) so that the sparse code will be used in larger areas and therefore avoid over-accuracy of _s_.<br>
 
-#####Other Notes:
+##### Other Notes:
 * Since we minimize _s_ and _A_ alternatively, the cost may not be decreasing all the time, but the overall trend should be.<br>
 * There are two changes in `sampleIMAGES.m`:
   1. Three parameters (images, patchDim, numPatches) are added to the function, so that we can customize patch choice;<br>
   2. The rescaling from [-1, 1] to [0.1, 0.9] is deleted, because we have to ensure an average of 0. (see comment for explanation).<br>
 
-##Exercise 10: ICA
-#####The following files are the core of this exercise:<br>
+## Exercise 10: ICA
+##### The following files are the core of this exercise:<br>
 * `orthonormalICACost.m`: compute J and ▽J. See [here](http://ufldl.stanford.edu/wiki/index.php/Deriving_gradients_using_the_backpropagation_idea "Deriving gradients using the backpropagation idea") for the method of calculating gradient. Notice that here we use L2 norm instead of L1 to compute J. An intoduction to L0, L1, L2 norm can be found at [here](http://blog.csdn.net/zouxy09/article/details/24971995 "机器学习中的范数规则化之（一）L0、L1与L2范数") (in Chinese).<br>
 * `ICAExercise.m`: The overall procedure, including Initialization of parameters, Sample patches, ZCA whiten patches, Gradient checking, and Optimization for orthonormal ICA.<br>
 
-#####Notes:
+##### Notes:
 * This exercise will take around 1-2 days for a laptop to run.<br>
