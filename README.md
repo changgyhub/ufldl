@@ -1,4 +1,4 @@
-# UFLDL Tutorial Solutions
+# Unsupervised Feature Learning and Deep Learning
 Solutions to the Exercises of UFLDL Tutorial [Old version](http://ufldl.stanford.edu/wiki/index.php/UFLDL_Tutorial "UFLDL Tutorial by Andrew Ng, etc. - Old version") and [New version](http://ufldl.stanford.edu/tutorial/ "UFLDL Tutorial by Andrew Ng, etc. - New version") (2016).<br><br>
 Some of the files, espacially images and mats, cannot be uploaded due to size contraint. Please download them from the tutorial website.<br>
 
